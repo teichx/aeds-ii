@@ -60,3 +60,19 @@ class ListaLinear {
     return false;
   }
 }
+
+public class LinearList {
+  public static void main(String args[]) {
+    ListaLinear lista = new ListaLinear(10);
+    lista.inserirFim(10);
+    lista.inserirFim(20);
+    lista.inserirFim(30);
+    lista.inserirFim(40);
+    lista.inserirFim(50);
+    lista.mostrar();
+    lista.removerInicio();
+    lista.removerFim();
+    lista.mostrar();
+    System.out.println(lista.pesquisar(20));
+  }
+}

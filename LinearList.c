@@ -113,6 +113,27 @@ int pesquisar(ListaLinear *lista, int elem)
   return 0;
 }
 
+void reverse(ListaLinear *lista)
+{
+  for (int i = 0; i < lista->n / 2; i++)
+  {
+    int temp = lista->items[i];
+    lista->items[i] = lista->items[lista->n - 1 - i];
+    lista->items[lista->n - 1 - i] = temp;
+  }
+}
+
+void recursiveReverse(ListaLinear *lista, int i)
+{
+  if (i < lista->n / 2)
+  {
+    int temp = lista->items[i];
+    lista->items[i] = lista->items[lista->n - 1 - i];
+    lista->items[lista->n - 1 - i] = temp;
+    recursiveReverse(lista, i + 1);
+  }
+}
+
 int main()
 {
   ListaLinear lista = newListaLinear(5);
@@ -122,14 +143,20 @@ int main()
   inserirFim(&lista, 4);
 
   mostrar(&lista);
-  printf("Pesquisar 5: %d\n", pesquisar(&lista, 5));
-  printf("Pesquisar 3: %d\n", pesquisar(&lista, 3));
-  printf("Remover 3: %d\n", remover(&lista, 2));
+  reverse(&lista);
   mostrar(&lista);
-  printf("Remover Inicio: %d\n", removerInicio(&lista));
+  recursiveReverse(&lista, 0);
   mostrar(&lista);
-  printf("Remover Fim: %d\n", removerFim(&lista));
-  mostrar(&lista);
-  delListaLinear(&lista);
+
+  // mostrar(&lista);
+  // printf("Pesquisar 5: %d\n", pesquisar(&lista, 5));
+  // printf("Pesquisar 3: %d\n", pesquisar(&lista, 3));
+  // printf("Remover 3: %d\n", remover(&lista, 2));
+  // mostrar(&lista);
+  // printf("Remover Inicio: %d\n", removerInicio(&lista));
+  // mostrar(&lista);
+  // printf("Remover Fim: %d\n", removerFim(&lista));
+  // mostrar(&lista);
+  // delListaLinear(&lista);
   return 0;
 }

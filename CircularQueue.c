@@ -87,6 +87,16 @@ bool pesquisar(FilaCircular *fila, int elem)
   return false;
 }
 
+int isVazia(FilaCircular *fila)
+{
+  return fila->tamanho == 0;
+}
+
+int isCheia(FilaCircular *fila)
+{
+  return fila->tamanho == fila->capacidade;
+}
+
 // void invertUsingStack(FilaCircular *fila)
 // {
 //   PilhaCircular stack = newPilhaCircular(fila->capacidade);
@@ -114,9 +124,20 @@ void mostrarRecursivo(FilaCircular *fila, int i)
 int main()
 {
   FilaCircular *fila = newFilaCircular(5);
+  printf(isVazia(fila) ? "Está vazia\n" : "Não está vazia\n");
+  printf(isCheia(fila) ? "Esta cheia\n" : "Não está cheia\n");
   enfileirar(fila, 10);
   enfileirar(fila, 20);
   enfileirar(fila, 30);
+
+  mostrarRecursivo(fila, 0);
+  printf(isVazia(fila) ? "Está vazia\n" : "Não está vazia\n");
+  printf(isCheia(fila) ? "Esta cheia\n" : "Não está cheia\n");
+
+  enfileirar(fila, 40);
+  enfileirar(fila, 50);
+  printf(isVazia(fila) ? "Está vazia\n" : "Não está vazia\n");
+  printf(isCheia(fila) ? "Esta cheia\n" : "Não está cheia\n");
   mostrarRecursivo(fila, 0);
 
   printf("Desenfileirado: %d\n", desenfileirar(fila));

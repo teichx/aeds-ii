@@ -117,10 +117,10 @@ int main()
   enfileirar(fila, 10);
   enfileirar(fila, 20);
   enfileirar(fila, 30);
-  mostrar(fila);
+  mostrarRecursivo(fila, 0);
 
   printf("Desenfileirado: %d\n", desenfileirar(fila));
-  mostrar(fila);
+  mostrarRecursivo(fila, 0);
 
   printf("Pesquisar 20: %s\n", pesquisar(fila, 20) ? "Encontrado" : "Não encontrado");
   printf("Pesquisar 50: %s\n", pesquisar(fila, 50) ? "Encontrado" : "Não encontrado");

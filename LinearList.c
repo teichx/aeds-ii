@@ -27,34 +27,6 @@ void delListaLinear(ListaLinear *lista)
   free(lista->items);
 }
 
-void inserirInicio(ListaLinear *lista, int elem)
-{
-  if (lista->n == lista->max)
-  {
-    fprintf(stderr, "Erro: Overflow\n");
-    exit(EXIT_FAILURE);
-  }
-
-  for (int i = lista->n - 1; i >= 0; i--)
-  {
-    lista->items[i + 1] = lista->items[i];
-  }
-  lista->items[0] = elem;
-  lista->n++;
-}
-
-void inserirFim(ListaLinear *lista, int elem)
-{
-  if (lista->n == lista->max)
-  {
-    fprintf(stderr, "Erro: Overflow\n");
-    exit(EXIT_FAILURE);
-  }
-
-  lista->items[lista->n] = elem;
-  lista->n++;
-}
-
 void inserir(ListaLinear *lista, int elem, int pos)
 {
   if (lista->n == lista->max)
@@ -76,34 +48,14 @@ void inserir(ListaLinear *lista, int elem, int pos)
   lista->n++;
 }
 
-int removerInicio(ListaLinear *lista)
+void inserirInicio(ListaLinear *lista, int elem)
 {
-  if (lista->n == 0)
-  {
-    fprintf(stderr, "Erro: Underflow\n");
-    exit(EXIT_FAILURE);
-  }
-
-  int elem = lista->items[0];
-  for (int i = 0; i < lista->n; i++)
-  {
-    lista->items[i] = lista->items[i + 1];
-  }
-  lista->n--;
-  return elem;
+  inserir(lista, elem, 0);
 }
 
-int removerFim(ListaLinear *lista)
+void inserirFim(ListaLinear *lista, int elem)
 {
-  if (lista->n == 0)
-  {
-    fprintf(stderr, "Erro: Underflow\n");
-    exit(EXIT_FAILURE);
-  }
-
-  int elem = lista->items[lista->n - 1];
-  lista->n--;
-  return elem;
+  inserir(lista, elem, lista->n);
 }
 
 int remover(ListaLinear *lista, int pos)
@@ -126,6 +78,16 @@ int remover(ListaLinear *lista, int pos)
   }
   lista->n--;
   return elem;
+}
+
+int removerInicio(ListaLinear *lista)
+{
+  remover(lista, 0);
+}
+
+int removerFim(ListaLinear *lista)
+{
+  remover(lista, lista->n - 1);
 }
 
 void mostrar(ListaLinear *lista)

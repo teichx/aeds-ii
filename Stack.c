@@ -75,6 +75,16 @@ int pesquisar(PilhaLinear *lista, int elem)
   return 0;
 }
 
+// ListaLinear toLista(PilhaLinear *lista)
+// {
+//   ListaLinear l = newListaLinear(lista->max);
+//   for (int i = 0; i < lista->n; i++)
+//   {
+//     inserirFim(&l, lista->items[i]);
+//   }
+//   return l;
+// }
+
 int main()
 {
   PilhaLinear lista = newPilhaLinear(5);
@@ -83,12 +93,6 @@ int main()
   empilhar(&lista, 3);
   empilhar(&lista, 4);
 
-  mostrar(&lista);
-  printf("Pesquisar 5: %d\n", pesquisar(&lista, 5));
-  printf("Pesquisar 3: %d\n", pesquisar(&lista, 3));
-  printf("Desempilhar: %d\n", desempilhar(&lista));
-  mostrar(&lista);
-  printf("Desempilhar: %d\n", desempilhar(&lista));
   mostrar(&lista);
 
   return 0;

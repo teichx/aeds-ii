@@ -75,6 +75,23 @@ int pesquisar(PilhaLinear *lista, int elem)
   return 0;
 }
 
+void mostrarRecursivo(PilhaLinear *lista, int i)
+{
+  if (i == 0)
+  {
+    printf("Items: [%d", lista->items[0]);
+    mostrarRecursivo(lista, i + 1);
+    return;
+  }
+  if (i == lista->n)
+  {
+    printf("]\n");
+    return;
+  }
+  printf(", %d", lista->items[i]);
+  mostrarRecursivo(lista, i + 1);
+}
+
 // ListaLinear toLista(PilhaLinear *lista)
 // {
 //   ListaLinear l = newListaLinear(lista->max);
@@ -93,7 +110,7 @@ int main()
   empilhar(&lista, 3);
   empilhar(&lista, 4);
 
-  mostrar(&lista);
+  mostrarRecursivo(&lista, 0);
 
   return 0;
 }
